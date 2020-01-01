@@ -63,6 +63,7 @@ class los():
 
         #~~~~~~~~~RESPONSES~~~~~~~~~
         self.ans = ""
+        self.query = ""
         self.runtime = 0
 
         self.login()
@@ -83,7 +84,7 @@ class los():
     def http(self):
         return self.__session
     @http.setter        #self.__session
-    def http(self):
+    def http(self,value):
         return
 
     @property          #self.__soup
@@ -141,6 +142,7 @@ class los():
         return
     
     def send(self,*args, **kwargs):
+        self.ans = self.query = ""
         vnames = _vname_(**kwargs)
         params = "&".join("%s=%s" % (k,v) for k,v in vnames.items())
         try:
@@ -148,8 +150,18 @@ class los():
             self.Parse()
             if self.out :
                 self.pblue("sended data : "+self.res.url)
-                self.psuccess("ANSWER ↓\n"+self.ans)
-                print(self.shtml.text)
+                self.psuccess("ANSWER ↓")
+                self.perror(self.ans)
+                if "Clear!" in self.ans:
+                    self.pwarning("""             
+                     ______     __         ______     ______     ______    
+                    /\  ___\   /\ \       /\  ___\   /\  __ \   /\  == \   
+                    \ \ \____  \ \ \____  \ \  __\   \ \  __ \  \ \  __<   
+                     \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\ \_\ 
+                      \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/ /_/ 
+                                                                        
+                    """)
+                self.phead("QUERY : "+self.query)
         except:
             self.result = False
             self.perror("SEND ERROR")
@@ -157,11 +169,14 @@ class los():
     
     def Parse(self):
         if len(self.res.text) < 20:
-            self.ans = self.res.text
+            self.ans = self.shtml.prettify()
             return
         aa = self.shtml.find_all("h2")
+        ss = self.shtml.find_all("strong")
         for a in aa:
             self.ans += a.get_text()+"\n"
+        for s in ss:
+            self.query +=s.get_text()+"\n"
         return
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -193,7 +208,7 @@ class los():
         return print(c.OKBLUE+msg+c.ENDC)
  
     def load(self,msg):
-        return print("\r"+msg)
+        return sys.stdout.write("\r"+msg)
     
     def log(self,msg):
         return print("[+] "+msg)
