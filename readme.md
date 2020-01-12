@@ -2,6 +2,12 @@
 
 this script is for LoS Challenge
 
+
+
+[:hammer:LOS LIB](https://github.com/leesh0/loslib)
+
+
+
 ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gatqc2yecwj30rs0c8q3g.jpg)
 
 
@@ -78,7 +84,7 @@ loslib.send(praramName="param1") #ex: id="' or 1=1 %23"
 
 send후에 출력되는 문자들을 다음과 같이 켜고 끌수 있음.
 
-`loslib.out = False #or True `
+`loslib.out = False #or True `
 
 
 
