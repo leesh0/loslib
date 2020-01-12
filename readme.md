@@ -76,6 +76,10 @@ loslib.send(praramName="param1") #ex: id="' or 1=1 %23"
 - `loslib.html` : response된 html태그
 - `loslib.shtml` : response된 html태그를 BeatifulSoup으로 변환된 데이터 리턴
 
+send후에 출력되는 문자들을 다음과 같이 켜고 끌수 있음.
+
+`loslib.out = False #or True `
+
 
 
 ## Start & end
@@ -114,4 +118,4 @@ loslib에서는 자동으로 현재 풀지 못한 최상위 문제로 지정되�
 
 - `hex(string)` : 문자열을 hex로 변환 (ex. AAAA ☞ 0x41414141)
 - `unhex(hex)` : hex로 변환된 문자열을 다시 string으로 변환
-- `urlencode(string)` : string을 url encoding
+- `urlencode(string)` : string을 url encoding
