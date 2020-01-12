@@ -4,7 +4,7 @@ this script is for LoS Challenge
 
 
 
-[:hammer:LOS LIB](https://github.com/leesh0/loslib)
+[:hammer: LOS LIB](https://github.com/leesh0/loslib)
 
 
 
