@@ -27,7 +27,7 @@ class c:                    #for print colored text
     UNDERLINE = '\033[4m'
 
 class los():
-    def __init__(self, id=False,pw=False):
+    def __init__(self, id=False,pw=False,base="https://los.rubiya.kr"):
         self.phead("""
                                                 
             __    _____ _____    __    _ _     
@@ -46,7 +46,7 @@ class los():
         #~~~~~~~~~~URLs~~~~~~~~~~~
         self.url_login = "https://los.rubiya.kr?login"
         self.url_prob = "https://los.rubiya.kr/static/json.js"
-        self.url_base = "https://los.rubiya.kr"
+        self.url_base = base
         self.url_prob = ""
         #~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -125,7 +125,7 @@ class los():
         tprobs = self.res.json()["data"]
         self.probs = dict()
         for prob in tprobs:
-            self.probs[prob["descrip"]] = {"status":prob["status"]=="completed" and True or False , "link":self.url_base+prob["link"].lstrip(".")}
+            self.probs[prob["descrip"]] = {"status":prob["status"]=="completed" and True or False , "link":("modsec" in prob["link"].lstrip(".") and prob["link"].lstrip(".") or self.url_base+prob["link"].lstrip("."))}
         self.set_next()
         return
     
@@ -222,5 +222,4 @@ class los():
 
     def urlencode(self,string):
         return "".join(["%"+x.encode("utf-8").hex() for x in string])
-
 
