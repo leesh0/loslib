@@ -4,7 +4,7 @@ this script is for LoS Challenge
 
 
 
-[:hammer: LOS LIB](https://github.com/leesh0/loslib)
+[LOS LIB](https://github.com/leesh0/loslib)
 
 
 
@@ -14,7 +14,7 @@ this script is for LoS Challenge
 
 
 
-## 빠른시작
+## 1. Usage
 
 ```python
 from loslib import *
@@ -25,11 +25,6 @@ sql.send(id="",pw="' or 1=1 %23") #paramName=""
 
 
 
-## 1. Use
-
-```python
-from loslib import *
-```
 
 
 
@@ -84,7 +79,7 @@ loslib.send(praramName="param1") #ex: id="' or 1=1 %23"
 
 send후에 출력되는 문자들을 다음과 같이 켜고 끌수 있음.
 
-`loslib.out = False #or True `
+`loslib.out = False #or True `
 
 
 
@@ -124,4 +119,4 @@ loslib에서는 자동으로 현재 풀지 못한 최상위 문제로 지정되�
 
 - `hex(string)` : 문자열을 hex로 변환 (ex. AAAA ☞ 0x41414141)
 - `unhex(hex)` : hex로 변환된 문자열을 다시 string으로 변환
-- `urlencode(string)` : string을 url encoding
+- `urlencode(string)` : string을 url encoding
